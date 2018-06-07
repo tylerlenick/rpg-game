@@ -31,15 +31,22 @@ var Character = function(){
 
 function newGame() {
     
-    gameOn = true;
-    $(".enemy-chars").hide();
-    $("#select-enemy").hide();
 
 }
 
 function charSelector() {
     
+    isCharSelected = true;
+    $("#pc-area").append(this);
 }
+
+function enemySelector() {
+
+    isEnemySelected = true;
+    $("enemy-area").append(this);
+}
+
+
 
 
 
@@ -53,20 +60,19 @@ function charSelector() {
 
 
 //On click event selecting PC
-$("#paladin").click(function() {
+$("#character").click(function() {
 
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $("#paladin").hide();
-        $("paladin-pc").show();
-        $("attack-btn").show();
+        $("#pc-area").append($("#character"));
+      
         var pc = new Character(20, 20, 20, false);
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $("#paladin").hide();
+        $("enemy-area").append($("#character"));
         var npc = new Character(20, 20, 20, false);
     }
    
@@ -127,6 +133,38 @@ $("#ranger").click(function() {
 
 
 //On click attack
+
+$("#attack-btn").click(function() {
+    //Check to make sure a character and enemy are selected
+    if (isCharSelected && isEnemySelected) {
+
+        //run method that causes characters to attack each other
+
+        //Check is either character loses their HP
+        if (npc.hp < 0) {
+
+            isEnemySelected = false;
+            //delete current instance of npc object 
+            //remove child from the #enemy-area
+
+        } else if (pc.hp < 0) {
+
+            //Offer to restart the game
+        
+        }   
+
+
+
+
+    } else {
+        //alert to select character/enemy
+    }
+
+
+
+
+
+});
 
 //Conditional to check when a character loses all their HP
 
