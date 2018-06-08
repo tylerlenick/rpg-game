@@ -60,71 +60,88 @@ function enemySelector() {
 
 
 //On click event selecting PC
-$("#character").click(function() {
+$("#scorpion").click(function() {
 
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $("#pc-area").append($("#character"));
+        $(".pc-area").append($("#scorpion"));
       
-        var pc = new Character(20, 20, 20, false);
+        var pc = {
+            name: "Scorpion",
+            hp: 20,
+            atk: 5
+        }
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $("enemy-area").append($("#character"));
-        var npc = new Character(20, 20, 20, false);
+        $(".enemy-area").append($("#scorpion"));
+        var npc = {
+            name: "Scorpion",
+            hp: 20,
+            atk: 5
+        }
+        
     }
    
 });
 
-$("#rogue").click(function() {
+$("#kung").click(function() {
     
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $("#rogue").hide();
-        var pc = new Character(20, 20, 20, false);
+        $(".pc-area").append($("#kung"));
+        var pc = {
+            name: "Kung Lao",
+            hp: 20,
+            atk: 5
+        }
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $("#rogue").hide();
-        var npc = new Character(20, 20, 20, false);
+        $(".enemy-area").append($("#kung"));
+        var npc = {
+            name: "Kung Lao",
+            hp: 20,
+            atk: 5
+        }
     }
 
     
 });
 
-$("#wizard").click(function() {
+$("#reptile").click(function() {
 
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $("#wizard").hide();
+        $(".pc-area").append($("#reptile"));
         var pc = new Character(20, 20, 20, false);
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $("#wizard").hide();
+        $(".enemy-area").append($("#reptile"));
         var npc = new Character(20, 20, 20, false);
     }
   
 });
 
-$("#ranger").click(function() {
+$("#subzero").click(function() {
 
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $("#ranger").hide();
+        $(".pc-area").append($("#subzero"));
         var pc = new Character(20, 20, 20, false);
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $("#ranger").hide();
+        $(".enemy-area").append($("#subzero"));
         var npc = new Character(20, 20, 20, false);
     }
  
@@ -139,13 +156,19 @@ $("#attack-btn").click(function() {
     if (isCharSelected && isEnemySelected) {
 
         //run method that causes characters to attack each other
+        npc.hp -= pc.atk;
+        pc.hp -= npc.atk;
 
+        console.log("npc.hp");
         //Check is either character loses their HP
         if (npc.hp < 0) {
 
             isEnemySelected = false;
             //delete current instance of npc object 
+            delete npc;
+            
             //remove child from the #enemy-area
+            $(".enemy-area").empty();
 
         } else if (pc.hp < 0) {
 
@@ -166,7 +189,7 @@ $("#attack-btn").click(function() {
 
 });
 
-//Conditional to check when a character loses all their HP
+
 
 
 
