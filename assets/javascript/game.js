@@ -5,24 +5,12 @@ window.onload=function(){
 var gameOn = false;
 var isCharSelected = false;
 var isEnemySelected = false;
+var numWins = 0;
+var finishHim = new Audio ("assets/audio/finish-him.mp3");
+var flawlessVictory = new Audio ("assets/audio/flawless-victory.mp3");
+var theme = new Audio ("assets/audio/theme.mp3");
 
 //declare objects
-
-// var Character = {
-//     name: "",
-//     hp: 0,
-//     ap: 0,
-//     ac: 0,
-//     dead: false,
-//     attack: function() {
-//         roll = Math.floor(Math.floor(Math.random() * 20) + 1);
-//         dmg = roll + ap;
-//         return dmg;
-//     },
-//     setName: function(newName) {
-//         this.name = newName;
-//     }
-// };
 
 var pc = {};
 var npc = {};
@@ -50,6 +38,7 @@ $(".character").click(function() {
 
     if (isCharSelected === false) {
         
+        theme.play();
         isCharSelected = true;
         $(".pc-area").append($("#" + $(this).attr("id")));
       
@@ -87,7 +76,7 @@ $("#attack-btn").click(function() {
         npc.hp -= pc.atk;
         pc.hp -= npc.atk;
 
-        pc.atk += 7;
+        pc.atk += pc.atk;
 
         $(".pc-area").find(".hp").text("HP: " + pc.hp);
         $(".enemy-area").find(".hp").text("HP: " + npc.hp);
@@ -104,24 +93,30 @@ $("#attack-btn").click(function() {
             
             //remove child from the #enemy-area
             $(".enemy-area").empty();
+            numWins++;
+            finishHim.play();
+
+            if (numWins === 3) {
+                $(".fourth-text").text("FLAWLESS VICTORY!");
+                flawlessVictory.play();
+            }
 
         } else if (pc.hp < 0) {
 
             //Offer to restart the game
-        
+            $(".reset-btn").show();
+            $(".fourth-text").text("You lose, try again");
         }   
 
 
+    } 
 
 
-    } else {
-        //alert to select character/enemy
-    }
+});
 
-
-
-
-
+//reset button on click
+$("#reset-btn").click(function() {
+    history.go(0);
 });
 
 
