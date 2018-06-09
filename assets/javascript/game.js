@@ -57,6 +57,7 @@ $(".character").click(function() {
         pc.hp = parseInt($(this).attr("data-hp"));
         pc.atk = parseInt($(this).attr("data-atk"));
         
+        $("#fight-banner").text("SELECT YOUR ENEMY");
 
     } else if (isEnemySelected === false && isCharSelected){
 
@@ -79,25 +80,27 @@ $("#attack-btn").click(function() {
     if (isCharSelected && isEnemySelected) {
 
         //run method that causes characters to attack each other
+        $(".top-text").text(pc.name + " hits " + npc.name + " for " + pc.atk + " damage! ");
+        $(".second-text").text(npc.name + " hits " + pc.name + " for " + npc.atk + " damage! ");
+        $(".third-text").text(" ");
+        
         npc.hp -= pc.atk;
         pc.hp -= npc.atk;
 
         pc.atk += 7;
 
-        
-        
+        $(".pc-area").find(".hp").text("HP: " + pc.hp);
+        $(".enemy-area").find(".hp").text("HP: " + npc.hp);
 
-        
-        console.log(pc.name);
-        console.log(npc.name);
-        console.log(pc.hp);
-        console.log(npc.hp);
+
+              
+    
         //Check is either character loses their HP
         if (npc.hp <= 0) {
 
             isEnemySelected = false;
             //delete current instance of npc object 
-            
+            $(".third-text").text("Enemy Defeated!");
             
             //remove child from the #enemy-area
             $(".enemy-area").empty();

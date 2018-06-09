@@ -16,7 +16,7 @@
     <div class="jumbotron jumbotron-fluid banner">
             <div class="container text-center">
               <h1 class="display-4 title-jumbo my-10"></h1>
-              <button type="button" class="btn btn-primary btn-lg" id="newGame-btn">New Game</button>
+              
               <p class="lead"></p>
             </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-12 text-center" id="select-char">
-                <h2>SELECT YOUR FIGHTER</h2>
+                <h2 id="fight-banner">SELECT YOUR FIGHTER</h2>
             </div>
         </div>
 
@@ -34,16 +34,16 @@
                 <span class="character" id="scorpion" data-hp="30" data-atk="2">
                     <span>Scorpion</span></br>
                     <img src="assets/img/scorpion.jpg" ></br>
-                    <span id="scorpion-hp">HP: 20</span>
+                    <span class="hp" id="scorpion-hp">HP: 30</span>
                 </span>
         
             </div>
 
             <div class="col-3"> 
-                <span class="character" id="kung" data-hp="30" data-atk="5">
+                <span class="character" id="kunglao" data-hp="30" data-atk="5">
                     <span>Kung Lao</span></br>
                     <img src="assets/img/kunglao.jpg"></br>
-                    <span id="kung-hp">HP: 20</span>
+                    <span  class="hp" id="kung-hp">HP: 30</span>
                 </span>
             </div>
 
@@ -51,7 +51,7 @@
                 <span class="character" id="reptile" data-hp="30" data-atk="7">
                     <span>Reptile</span></br>
                     <img src="assets/img/rep.jpg" ></br>
-                    <span id="reptile-hp">HP: 20</span>
+                    <span class="hp" id="reptile-hp">HP: 30</span>
                 </span>
 
             </div>
@@ -60,7 +60,7 @@
                 <span class="character"id="subzero" data-hp="30" data-atk="1">
                     <span>Sub Zero</span></br>
                     <img src="assets/img/subzero.png" ></br>
-                    <span id="subzero-hp">HP: 20</span>
+                    <span class="hp" id="subzero-hp">HP: 30</span>
                 </span>
         
             </div>
@@ -78,8 +78,28 @@
                
             <div class="col-4 pc-area text-center"></div>
 
-            <div class"col-4 btn-area text-center">
-                <button type="button" class="btn btn-primary" id="attack-btn">Attack</button>
+            <div class="col-4">
+                <div class"btn-area text-center">
+                    <button type="button" class="btn btn-primary" id="attack-btn">Attack</button>
+
+                </div>
+                <br/>
+                <div class="top-text text-center"></div>
+                <br/>
+                <div class="second-text text-center"></div>
+                <br/>
+                <div class="third-text text-center"></div>
+                <br/>
+                <div class="fourth-text text-center"></div>
+                <br/>
+                <div class="reset-btn text-center"></div>
+
+
+
+
+
+
+
 
             </div>
 
