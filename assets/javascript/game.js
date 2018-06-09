@@ -99,6 +99,7 @@ $("#attack-btn").click(function() {
             if (numWins === 3) {
                 $(".fourth-text").text("FLAWLESS VICTORY!");
                 flawlessVictory.play();
+                $(".reset-btn").show();
             }
 
         } else if (pc.hp < 0) {
