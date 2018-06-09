@@ -8,24 +8,24 @@ var isEnemySelected = false;
 
 //declare objects
 
-var Character = {
-    name: "",
-    hp: 0,
-    ap: 0,
-    ac: 0,
-    dead: false,
-    attack: function() {
-        roll = Math.floor(Math.floor(Math.random() * 20) + 1);
-        dmg = roll + ap;
-        return dmg;
-    },
-    setName: function(newName) {
-        this.name = newName;
-    }
-};
+// var Character = {
+//     name: "",
+//     hp: 0,
+//     ap: 0,
+//     ac: 0,
+//     dead: false,
+//     attack: function() {
+//         roll = Math.floor(Math.floor(Math.random() * 20) + 1);
+//         dmg = roll + ap;
+//         return dmg;
+//     },
+//     setName: function(newName) {
+//         this.name = newName;
+//     }
+// };
 
-var pc = Character;
-var npc = Character;
+var pc = {};
+var npc = {};
 
 
 
@@ -33,13 +33,6 @@ var npc = Character;
 
 
 //Functions
-
-
-    
-
-
-
-
 
 
 
@@ -65,7 +58,7 @@ $(".character").click(function() {
         pc.atk = parseInt($(this).attr("data-atk"));
         
 
-    } else if (isEnemySelected === false){
+    } else if (isEnemySelected === false && isCharSelected){
 
         isEnemySelected = true;
         $(".enemy-area").append($("#" + $(this).attr("id")));
@@ -89,14 +82,22 @@ $("#attack-btn").click(function() {
         npc.hp -= pc.atk;
         pc.hp -= npc.atk;
 
-        console.log(npc.hp);
+        pc.atk += 7;
+
+        
+        
+
+        
+        console.log(pc.name);
+        console.log(npc.name);
         console.log(pc.hp);
+        console.log(npc.hp);
         //Check is either character loses their HP
-        if (npc.hp < 0) {
+        if (npc.hp <= 0) {
 
             isEnemySelected = false;
             //delete current instance of npc object 
-            delete npc;
+            
             
             //remove child from the #enemy-area
             $(".enemy-area").empty();
