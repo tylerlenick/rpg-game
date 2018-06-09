@@ -8,43 +8,36 @@ var isEnemySelected = false;
 
 //declare objects
 
-var Character = function(){
-
-    this.name = "";
-    this.hp = 0;
-    this.ap = 0;
-    this.ac = 0;
-    this.dead = false;
-    this.attack = function() {
+var Character = {
+    name: "",
+    hp: 0,
+    ap: 0,
+    ac: 0,
+    dead: false,
+    attack: function() {
         roll = Math.floor(Math.floor(Math.random() * 20) + 1);
         dmg = roll + ap;
         return dmg;
+    },
+    setName: function(newName) {
+        this.name = newName;
     }
-
-
 };
+
+var pc = Character;
+var npc = Character;
+
+
 
 
 
 
 //Functions
 
-function newGame() {
+
     
 
-}
 
-function charSelector() {
-    
-    isCharSelected = true;
-    $("#pc-area").append(this);
-}
-
-function enemySelector() {
-
-    isEnemySelected = true;
-    $("enemy-area").append(this);
-}
 
 
 
@@ -60,95 +53,32 @@ function enemySelector() {
 
 
 //On click event selecting PC
-$("#scorpion").click(function() {
+$(".character").click(function() {
 
     if (isCharSelected === false) {
         
         isCharSelected = true;
-        $(".pc-area").append($("#scorpion"));
+        $(".pc-area").append($("#" + $(this).attr("id")));
       
-        var pc = {
-            name: "Scorpion",
-            hp: 20,
-            atk: 5
-        }
+        pc.name = $(this).attr("id");
+        pc.hp = parseInt($(this).attr("data-hp"));
+        pc.atk = parseInt($(this).attr("data-atk"));
+        
 
     } else if (isEnemySelected === false){
 
         isEnemySelected = true;
-        $(".enemy-area").append($("#scorpion"));
-        var npc = {
-            name: "Scorpion",
-            hp: 20,
-            atk: 5
-        }
+        $(".enemy-area").append($("#" + $(this).attr("id")));
+
+        npc.name = $(this).attr("id");
+        npc.hp = parseInt($(this).attr("data-hp"));
+        npc.atk = parseInt($(this).attr("data-atk"));
+        
         
     }
    
+
 });
-
-$("#kung").click(function() {
-    
-    if (isCharSelected === false) {
-        
-        isCharSelected = true;
-        $(".pc-area").append($("#kung"));
-        var pc = {
-            name: "Kung Lao",
-            hp: 20,
-            atk: 5
-        }
-
-    } else if (isEnemySelected === false){
-
-        isEnemySelected = true;
-        $(".enemy-area").append($("#kung"));
-        var npc = {
-            name: "Kung Lao",
-            hp: 20,
-            atk: 5
-        }
-    }
-
-    
-});
-
-$("#reptile").click(function() {
-
-    if (isCharSelected === false) {
-        
-        isCharSelected = true;
-        $(".pc-area").append($("#reptile"));
-        var pc = new Character(20, 20, 20, false);
-
-    } else if (isEnemySelected === false){
-
-        isEnemySelected = true;
-        $(".enemy-area").append($("#reptile"));
-        var npc = new Character(20, 20, 20, false);
-    }
-  
-});
-
-$("#subzero").click(function() {
-
-    if (isCharSelected === false) {
-        
-        isCharSelected = true;
-        $(".pc-area").append($("#subzero"));
-        var pc = new Character(20, 20, 20, false);
-
-    } else if (isEnemySelected === false){
-
-        isEnemySelected = true;
-        $(".enemy-area").append($("#subzero"));
-        var npc = new Character(20, 20, 20, false);
-    }
- 
-});
-
-
-
 //On click attack
 
 $("#attack-btn").click(function() {
@@ -159,7 +89,8 @@ $("#attack-btn").click(function() {
         npc.hp -= pc.atk;
         pc.hp -= npc.atk;
 
-        console.log("npc.hp");
+        console.log(npc.hp);
+        console.log(pc.hp);
         //Check is either character loses their HP
         if (npc.hp < 0) {
 
@@ -192,7 +123,6 @@ $("#attack-btn").click(function() {
 
 
 
-
-
-
 }
+
+

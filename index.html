@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"> </script>
 
-    <div class="jumbotron jumbotron-fluid background banner">
+    <div class="jumbotron jumbotron-fluid banner">
             <div class="container text-center">
               <h1 class="display-4 title-jumbo my-10"></h1>
               <button type="button" class="btn btn-primary btn-lg" id="newGame-btn">New Game</button>
@@ -31,7 +31,7 @@
         <div class="row text-center player-chars">
 
             <div class="col-3">
-                <span id="scorpion">
+                <span class="character" id="scorpion" data-hp="30" data-atk="2">
                     <span>Scorpion</span></br>
                     <img src="assets/img/scorpion.jpg" ></br>
                     <span id="scorpion-hp">HP: 20</span>
@@ -39,23 +39,29 @@
         
             </div>
 
-            <div class="col-3" id="kung">
-                <span>Kung Lao</span></br>
-                <img src="assets/img/kunglao.jpg"></br>
-                <span id="kung-hp">HP: 20</span>
+            <div class="col-3"> 
+                <span class="character" id="kung" data-hp="30" data-atk="2">
+                    <span>Kung Lao</span></br>
+                    <img src="assets/img/kunglao.jpg"></br>
+                    <span id="kung-hp">HP: 20</span>
+                </span>
             </div>
 
-            <div class="col-3" id="reptile">
+            <div class="col-3">
+                <span class="character" id="reptile" data-hp="30" data-atk="2">
                     <span>Reptile</span></br>
-                <img src="assets/img/rep.jpg" ></br>
-                <span id="reptile-hp">HP: 20</span>
+                    <img src="assets/img/rep.jpg" ></br>
+                    <span id="reptile-hp">HP: 20</span>
+                </span>
 
             </div>
 
-            <div class="col-3" id="subzero">
+            <div class="col-3"> 
+                <span class="character"id="subzero" data-hp="30" data-atk="2">
                     <span>Sub Zero</span></br>
-                <img src="assets/img/subzero.png" ></br>
-                <span id="subzero-hp">HP: 20</span>
+                    <img src="assets/img/subzero.png" ></br>
+                    <span id="subzero-hp">HP: 20</span>
+                </span>
         
             </div>
 
@@ -68,7 +74,7 @@
                     </div>
         </div>
 
-        <div class="row battle-zone text-center">
+        <div class="row battle-zone text-center" style="display: flex; justify-content: space-between">
                
             <div class="col-4 pc-area text-center"></div>
 
